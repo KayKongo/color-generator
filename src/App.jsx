@@ -3,11 +3,10 @@ import Form from "./components/Form";
 
 const App = () => {
   return (
-    <div>
-      <h2>Color Generator</h2>
+    <main>
       <Form />
       <ColorList />
-    </div>
+    </main>
   );
 };
 export default App;
