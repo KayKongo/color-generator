@@ -5,14 +5,14 @@ import Values from "values.js";
 import { ToastContainer, toast } from "react-toastify";
 
 const App = () => {
-  const [colors, setColors] = useState(new Values("#000000").all(10));
+  const [colors, setColors] = useState(new Values("#ff1000").all(10));
 
   const addColor = (color) => {
     try {
       const newColors = new Values(color).all(10);
       setColors(newColors);
     } catch (error) {
-      toast.error("That's not a valid hex color code!");
+      toast.error(error.message);
     }
   };
 
