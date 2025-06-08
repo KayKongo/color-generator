@@ -1,11 +1,26 @@
+import { useState } from "react";
 import ColorList from "./components/ColorList";
 import Form from "./components/Form";
+import Values from "values.js";
+import { ToastContainer, toast } from "react-toastify";
 
 const App = () => {
+  const [colors, setColors] = useState(new Values("#000000").all(10));
+
+  const addColor = (color) => {
+    try {
+      const newColors = new Values(color).all(10);
+      setColors(newColors);
+    } catch (error) {
+      toast.error("That's not a valid hex color code!");
+    }
+  };
+
   return (
     <main>
-      <Form />
-      <ColorList />
+      <Form addColor={addColor} />
+      <ColorList colors={colors} />
+      <ToastContainer position="top-center" />
     </main>
   );
 };
